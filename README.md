@@ -8,8 +8,8 @@
 ---
 
 [image1]: ./carsandnoncars.PNG "cars and noncars"
-[image2]: ./original1.PNG "Regular"
-[image3]: ./original1.PNG "Regular"
+[image2]: ./bboxesfirst.PNG "Regular"
+[image3]: ./bboxeslast.PNG "Regular"
 
 ## Pipeline
 
@@ -17,7 +17,15 @@
 
 ![alt text][image1]
 
-* Then, to find cars, a sliding window goes across the image, and for the area where the window is, have the SVC predict if there is a car there or not. Here is an example of boxes drawn over all the patches where the SVC thinks there is a car If the SVC thinks there is, add heat in that spot on a heatmap retpresenting where the SVC thinks there are cars. Then, with that heatmap, draw a box over where areas with sufficient heat (not just drawing a box over everywhere where there is any heat for the purpose of removing false positives) in the heatmap on the original image. Also, if the pipeline is working with a video, keep a constant heatmap, and when a new heatmap is generated, take a weighted mean of the constant heatmap and the new heatmap, and use that for drawing the boxes, then set the constant heatmap to the weighted average heatmap.
+* Then, to find cars, a sliding window goes across the image, and for the area where the window is, have the SVC predict if there is a car there or not. Here is an example of boxes drawn over all the patches where the SVC thinks there is a car:
+
+![alt text][image2]
+
+* If the SVC thinks there is, add heat in that spot on a heatmap retpresenting where the SVC thinks there are cars. Then, with that heatmap, draw a box over where areas with sufficient heat (not just drawing a box over everywhere where there is any heat for the purpose of removing false positives) in the heatmap on the original image.
+
+![alt text][image3]
+
+* Also, if the pipeline is working with a video, keep a constant heatmap, and when a new heatmap is generated, take a weighted mean of the constant heatmap and the new heatmap, and use that for drawing the boxes, then set the constant heatmap to the weighted average heatmap.
 
 ---
 
