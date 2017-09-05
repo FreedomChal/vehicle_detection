@@ -13,7 +13,7 @@
 
 ## Pipeline
 
-* First, I trained a (nonlinear) SVC on car and noncar data similar to these, with the HOG features extracted using skimage.feature.hog on each color channel, and the color histogram and spatial features (low resolution image features) extracted and all the features concatenated together. Here are examples of a car and noncar training image:
+* First, I trained an RBF SVC on car and noncar data similar to these, with the HOG features extracted using skimage.feature.hog on each color channel, and the color histogram and spatial features (low resolution image features) extracted and all the features concatenated together. Here are examples of a car and noncar training image:
 
 ![alt text][image1]
 
