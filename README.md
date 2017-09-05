@@ -8,8 +8,9 @@
 ---
 
 [image1]: ./carsandnoncars.PNG "cars and noncars"
-[image2]: ./bboxesfirst.PNG "Regular"
-[image3]: ./bboxeslast.PNG "Regular"
+[image2]: ./bboxesfirst.PNG "bboxes"
+[image3]: ./bboxeslast.PNG "bboxes corrected"
+[image4]: ./heatmap.PNG "Heatmap"
 
 ## Pipeline
 
@@ -21,8 +22,12 @@
 
 ![alt text][image2]
 
-* If the SVC thinks there is a car in the window area patch, add heat in that spot on a heatmap retpresenting where the SVC thinks there are cars. Then, with that heatmap, use thresholding to ignore areas with insufficient heat (not just drawing a box over everywhere where there is any heat for the purpose of removing false positives) in the heatmap on the original image.
+* If the SVC thinks there is a car in the window area patch, add heat in that spot on a heatmap retpresenting where the SVC thinks there are cars. Then, with that heatmap, use thresholding to ignore areas with insufficient heat (not just drawing a box over everywhere where there is any heat for the purpose of removing false positives) and draw bounding boxes over car locations in the heatmap on the original image. 
 
+Heatmap:
+![alt text][image4]
+
+Cars:
 ![alt text][image3]
 
 * Also, if the pipeline is working with a video, keep a constant heatmap, and when a new heatmap is generated, multiply the constant heatmap by decay hyperparameter (I got that idea from [here](https://github.com/gardenermike/vehicle-tracking/blob/master/vehicle-detection.ipynb)) then add the new heatmap, only with the max value set to 0.5 using np.clip to the constant heatmap.
