@@ -43,6 +43,7 @@ Cars:
 ### Hyperparameters
 * For the cell_per_block, I used a small number to make the HOG extraction go faster, and it also seemed to just improove the results. 
 * For most of the other hyperparameters, I experimented a bit, and settled on their current values, as they worked best. Also, for a couple parameters, I was inspired by the same person I got the idea of using the persistent heatmap with decay.
+* For the colorspace, I used YCrCb, as [research suggests it's more powerful than most colorspaces](https://pure.tue.nl/ws/files/3283178/Metis245392.pdf)
 ---
 
 * Using the persistent heatmap with decay was quite useful, expecially since at one point, my SVC had a severe problem with false positives. The reason for it is that when using this method, single time false positives are often ignored. However, cars the SVC consistently predicts are cars are consistently shown as cars, even if the SVC doesn't notice them in a frame or two.
